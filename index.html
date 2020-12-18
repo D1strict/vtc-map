@@ -1,15 +1,67 @@
-<!-- 
+<!--
 	Copyright 2018 Edoardo Grassi
 -->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>VTLOG MAP</title>
+	<title>D1strict-VTC | Live-Map</title>
 	<style type="text/css">
+
+		/* open-sans-regular - latin */
+		@font-face {
+			font-family: 'Open Sans';
+			font-style: normal;
+			font-weight: 400;
+			src: url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.eot'); /* IE9 Compat Modes */
+			src: local(''),
+					 url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+					 url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+					 url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+					 url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+					 url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+		}
+
+		/*@font-face {
+		 font-family: 'Material Icons';
+		 font-style: normal;
+		 font-weight: 400;
+		 src: url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.eot");
+		 src: local('Material Icons'),
+					local('MaterialIcons-Regular'),
+					url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.woff2") format('woff2'),
+					url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.woff") format('woff'),
+					url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.ttf") format('truetype');
+		}*/
+
+		/* fallback */
+		@font-face {
+			font-family: 'Material Icons';
+			font-style: normal;
+			font-weight: 400;
+			src: url(https://vtc-map.d1strict.de/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+		}
+
+		.material-icons {
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 24px;
+			line-height: 1;
+			letter-spacing: normal;
+			text-transform: none;
+			display: inline-block;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			-webkit-font-feature-settings: 'liga';
+			-webkit-font-smoothing: antialiased;
+		}
+
+
 		body {
 			margin: 0;
 			text-align: center;
-			font-family: Roboto;
+			font-family: "Open Sans";
 			font-size: 30px;
 			min-width: 100%;
 			min-height: 100%;
@@ -18,7 +70,7 @@
 			color: white;
 		}
 		html {
-			background: url(images/background.jpg) no-repeat center center fixed; 
+			background: url(images/background.jpg) no-repeat center center fixed;
   			-webkit-background-size: cover;
   			-moz-background-size: cover;
   			-o-background-size: cover;
@@ -51,7 +103,7 @@
 			height: 100%;
 			top:0;
 			left:0;
-			background-image: url("img/st.png");
+			background-image: url("images/st.png");
 			padding-top: 10%;
 			text-align: center;
 			opacity: 0;
@@ -78,19 +130,20 @@
 			cursor: pointer;
 		}
 	</style>
-	<link rel="icon" href="https://tour-o-matic.net/favicon.ico">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="icon" href="https://d1strict.de/images/style-5/favicon.ico">
 	<meta name="theme-color" content="#0C151C">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
 	<br><br>
-	<h1>Virtual Truck Log</h1>
+	<h1>D1strict-VTC</h1>
 	<br>Select a map<br>
 	<div>
 		<a href="ets2"><img src="images/ets2logo.png"><br>Euro Truck Simulator</a><br>
-		<a href="ats"><img src="images/atslogosmall.png" ><br>American Truck Simulator</a>
+		<!--<a href="ats"><img src="images/atslogosmall.png" ><br>American Truck Simulator</a><br>-->
+		<a href="https://d1strict.de/privacy/"><img src="images/privacy.png" ><br>Privacy</a>
+		<a href="https://d1strict.de/legal-notice/"><img src="images/legalnotice.png" ><br>Legal Notice</a>
 	</div>
 	<div id="alert">
 		<div>

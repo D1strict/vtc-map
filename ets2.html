@@ -1,19 +1,68 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>VTL MAP | ETS2</title>
+		<title>D1strict-VTC | ETS2-Live-Map</title>
 		<meta name="theme-color" content="#0F0F0F">
-		<link rel="icon" href="https://vtlog.net/favicon.ico">
+		<link rel="icon" href="https://d1strict.de/images/style-5/favicon.ico">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<script src="js/leaflet.js?v=3"></script>
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<style type="text/css">
     		#ets2 {
   				background-color: #E0E0E0;
     		}
+
+				/* open-sans-regular - latin */
+				@font-face {
+				  font-family: 'Open Sans';
+				  font-style: normal;
+				  font-weight: 400;
+				  src: url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.eot'); /* IE9 Compat Modes */
+				  src: local(''),
+				       url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				       url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+				       url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+				       url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+				       url('https://vtc-map.d1strict.de/fonts/open-sans-v18-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+				}
+
+				/*@font-face {
+			   font-family: 'Material Icons';
+			   font-style: normal;
+			   font-weight: 400;
+			   src: url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.eot");
+			   src: local('Material Icons'),
+			        local('MaterialIcons-Regular'),
+			        url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.woff2") format('woff2'),
+			        url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.woff") format('woff'),
+			        url("https://vtc-map.d1strict.de/fonts/MaterialIcons-Regular.ttf") format('truetype');
+				}*/
+
+				/* fallback */
+				@font-face {
+				  font-family: 'Material Icons';
+				  font-style: normal;
+				  font-weight: 400;
+				  src: url(https://vtc-map.d1strict.de/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+				}
+
+				.material-icons {
+				  font-family: 'Material Icons';
+				  font-weight: normal;
+				  font-style: normal;
+				  font-size: 24px;
+				  line-height: 1;
+				  letter-spacing: normal;
+				  text-transform: none;
+				  display: inline-block;
+				  white-space: nowrap;
+				  word-wrap: normal;
+				  direction: ltr;
+				  -webkit-font-feature-settings: 'liga';
+				  -webkit-font-smoothing: antialiased;
+				}
     	</style>
-    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 		<link rel="stylesheet" href="css/style.css?v=3"/>
 		<link rel="stylesheet" href="css/leaflet.css?v=3"/>
 		<link rel="stylesheet" href="css/draw.css?v=3"/>
@@ -30,12 +79,14 @@
 		</div>
 		<div id="drawer">
 			<div id="preview">
-				<center><a href="https://vtlog.net" target="_blank"><h2>Virtual Truck Log</h2></a></center><div onclick="hidemenu()" ><i class="material-icons">&#xE5CB;</i></div>
+				<center><a href="https://d1strict.de/vtc/" target="_blank"><h2>D1strict-VTC</h2></a></center><div onclick="hidemenu()" ><i class="material-icons">&#xE5CB;</i></div>
 			</div>
 			<div id="choose" >
 				<ul>
 					<li id="ets2" class="gamelist"><a href="ets2"><img src="images/ets2logo.png?v=2"><div> </div>Euro Truck Simulator</a></li>
-					<li id="ats" class="gamelist"><a href="ats"><img src="images/atslogo.png?v=2"><div> </div>American Truck Simulator</a></li>
+					<!--<li id="ats" class="gamelist"><a href="ats"><img src="images/atslogo.png?v=2"><div> </div>American Truck Simulator</a></li>-->
+					<li id="ats" class="gamelist"><a href="https://d1strict.de/privacy/" target="_blank" rel="nofollow"><img src="images/privacys.png"><div> </div>Privacy</a></li>
+					<li id="ats" class="gamelist"><a href="https://d1strict.de/legal-notice/" target="_blank" rel="nofollow"><img src="images/legal-notices.png"><div> </div>Legal Notice</a></li>
 					<li style="padding-left:16px;color:#BDBDBD;border-top:1px;border-top-color:#E0E0E0;border-top-style:solid;height: 48px;display: flex;align-items: center;">Players</li>
 				</ul>
 				<ul id="list">
@@ -132,7 +183,7 @@
 
 			// INPUT SELECT A CITY...
 			Object.keys(g_cities_json).sort().forEach(function(city) {
-				chooselist += "<option value='"+city+"'>"+city+"</option>"; 
+				chooselist += "<option value='"+city+"'>"+city+"</option>";
 			});
 			document.getElementById("inputtype").innerHTML += chooselist;
 
@@ -150,7 +201,7 @@
 				new L.Marker(map.unproject([coords[0],coords[1]], 8), {icon: new L.DivIcon({className: 'citiesnames',html:'<h2>'+ city +'</h2>'})}).addTo(map);
 			});
 			playerslayer.addTo(map);
-			
+
 
 			// Checking all these things...
 			// CHECK IF THE USER WANT TO FOLLOW SOMEBODY
@@ -235,7 +286,7 @@
 				}
 			};
 
-			// EVENT HANDLERS 
+			// EVENT HANDLERS
 			map.on("zoom",function (){
 				for (var i = 0; i < document.getElementsByClassName('citiesnames').length; i++) {
 					document.getElementsByClassName('citiesnames')[i].style.opacity = String((map.getZoom() - 2) / 4);
@@ -368,9 +419,9 @@
 				};
 				box = document.getElementById("boxlink");
 				sharebox = document.getElementById("sharebox");
-				box.value = "http://map.vtlog.net/ets2.html?export="+link
+				box.value = "https://vtcmap.d1strict.de/ets2.html?export="+link
 				sharebox.style.opacity = '1';
-				sharebox.style.visibility = 'visible';		
+				sharebox.style.visibility = 'visible';
 				box.select();
 				box.focus();
 				hidemenu();
@@ -401,11 +452,11 @@
 			}
 			function getUsers(resp){
 				var lastreq = new XMLHttpRequest();
-				lastreq.onreadystatechange = function() { 
+				lastreq.onreadystatechange = function() {
 					if (lastreq.readyState == 4 && lastreq.status == 200)
 						elab(lastreq.responseText);
 				}
-				lastreq.open("GET", "https://tracker.vtlog.net/?game=eut2", true ); // add to the link '&vtc=<your_vtc_id>' for showing only your vtc
+				lastreq.open("GET", "https://tracker.vtlog.net/?game=eut2&vtc=9838", true ); // add to the link '&vtc=<your_vtc_id>' for showing only your vtc
 				lastreq.send( null );
 			}
 			function elab(text) {
@@ -440,10 +491,10 @@
 				setTimeout(function () {
 					getUsers();
 				},500);
-				
+
 			}
 			function putinfo(nick,brand,speed,fuel,from,to,damtruck,damtrailer) {
-				textvtc = " for VTC NAME ";
+				textvtc = " for D1strict ";
 				html = nick + "<p>Driving a " + brand + textvtc + "<br>Speed: " + parseInt(speed) + "km/h<br>Fuel: " + parseInt(fuel) + "L" + "<br>Truck damage: " + parseInt(damtruck) + "%<br>"
 				if (from != -1 && to != -1) {
 					html += "With a trailer from " + from + " to " + to + "<br>";
