@@ -9,6 +9,11 @@ Order allow,deny
 Deny from all
 </Files>
 
+<Files index-old.html>
+Order allow,deny
+Deny from all
+</Files>
+
 # ----------------------------------------------------------------------
 # Allow loading of external fonts
 # ----------------------------------------------------------------------
