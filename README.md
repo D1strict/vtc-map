@@ -13,20 +13,20 @@ These one below can be used in every map, even in map.vtlog.net.
 follow:
     value: steam_id
     use: focus immediately on a user with the indicated steam_id, if online
-    example: ets2.html?follow=76561198212562517
+    example: index.html?follow=76561198212562517
 mode:
     value: 
         frame -> draw controls are hidden
         minimal -> hides everything
-    example: ets2.html?mode=frame
+    example: index.html?mode=frame
 zoom:
     value: 0 <= integer <= 8
     use: set the initial zoom of map that goes from 0 to 8 where 0 is the minimum zoom
-    example: ets2.html?zoom=4
+    example: index.html?zoom=4
 draggable:
     value: 
         false -> prevent map dragging
-    example: ets2.html?draggable=false
+    example: index.html?draggable=false
 zoomable:
     value:
         false -> prevent map zooming
@@ -37,21 +37,20 @@ These one below can be used only in the actual map.vtlog.net website.
 realtime:
     value:
         false -> prevent map to load livetracker data (so dots won't be showed)
-    example: ets2.html?realtime=false
+    example: index.html?realtime=false
 job:
     value: job_id
     use: this will load the events of the provided job and will show them with their location
-    example: ets2.html?job=577276
+    example: index.html?job=577276
 vtc:
     value: vtc_id
     use: shows only people of a certain vtc
-    example: ets2.html?vtc=11
+    example: index.html?vtc=11
 ```
 
 **Want to have the map of your VTC in your website using VTLOG?**
 You can put an iframe in your website linking to the map with these URLs:
- - `https://map.vtlog.net/ets2?vtc=<your_vtc_id_here>` for ETS2
- - `https://map.vtlog.net/ats?vtc=<your_vtc_id_here>` for ATS
+ - `https://vtc-map.d1strict.de/index.html?vtc=<your_vtc_id_here>` for ETS2
 
 You can find your vtc_id in the URL of the VTC's home page with the format `https://<your_vtc_id_here>.vtlog.net`. If you have any problem in retrieving your vtc_id you can contact us on our Discord server.
 
