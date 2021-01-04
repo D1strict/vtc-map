@@ -1,4 +1,4 @@
-# VTLog Map
+# D1strict VTC-Map
 This repository contains all the necessary files for running an interactive ETS2/ATS map, similar to the one hosted in [map.vtlog.net](https://map.vtlog.net).
 This is an old version of the original map that I keep functional because it's easier for new people in the world of ETS2/ATS development and JavaScript.
 The missing features from the live one are:
